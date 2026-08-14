@@ -1,0 +1,73 @@
+{
+  "generated_at_utc": "2026-08-14T10:24:02.836846+00:00",
+  "warehouse": "data/warehouse/road_safety.db",
+  "passed": true,
+  "checks": [
+    {
+      "check_id": "crash_row_count",
+      "description": "Expected release row count",
+      "passed": true,
+      "observed": 415407
+    },
+    {
+      "check_id": "crash_key_unique",
+      "description": "Crash reference is unique within release",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check_id": "year_range",
+      "description": "Expected release year range",
+      "passed": true,
+      "observed": "2001-2025"
+    },
+    {
+      "check_id": "year_fk",
+      "description": "Every crash resolves to year dimension",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check_id": "location_fk",
+      "description": "Every crash resolves to location dimension",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check_id": "coordinate_range",
+      "description": "Coordinates fall in a broad Queensland bounding box",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check_id": "nonnegative_counts",
+      "description": "Casualty counts are non-negative",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check_id": "casualty_component_reconciliation",
+      "description": "Total casualties equal published components",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check_id": "partial_year_label",
+      "description": "2025 is labelled incomplete/preliminary",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check_id": "persistence_max_five",
+      "description": "Five-year persistence metrics cannot exceed five",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check_id": "population_lga_match",
+      "description": "Every known TMR LGA matches an ABS population record",
+      "passed": true,
+      "observed": 0
+    }
+  ]
+}

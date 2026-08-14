@@ -1,0 +1,14 @@
+{
+  "dataset_id": "crash-data-from-queensland-roads",
+  "package_api": "https://www.data.qld.gov.au/api/3/action/package_show?id=crash-data-from-queensland-roads",
+  "publisher": "Queensland Government - Department of Transport and Main Roads",
+  "license": "Creative Commons Attribution 4.0",
+  "expected_resources": {
+    "e88943c0-5968-4972-a15f-38e120d72ec0": "crash_locations",
+    "3fc53539-d529-4c1d-85f8-6c92d9e06fc8": "road_casualties",
+    "dd13a889-2a48-4b91-8c64-59f824ed3d2c": "driver_demographics",
+    "177dc50c-0cf7-46ba-8a69-99695aeaa46a": "restraint_helmet_use",
+    "f999155b-37f7-48aa-b5dd-644838130b0b": "vehicle_types",
+    "18ee2911-992f-40ed-b6ae-e756859786e6": "crash_factors"
+  }
+}

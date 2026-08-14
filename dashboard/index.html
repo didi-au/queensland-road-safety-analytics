@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Queensland Road Safety Priorities</title>
+  <meta name="description" content="Decision-focused analysis of Queensland fatal and serious road-crash burden, 2020-2024.">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    :root{--navy:#14395b;--blue:#2878a8;--amber:#d88a18;--red:#a73b3b;--ink:#172332;--muted:#647383;--paper:#f5f7fa;--white:#fff}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:15px/1.5 Inter,Arial,sans-serif}
+    header{color:#fff;background:linear-gradient(120deg,#102e4a,#1e6084);padding:46px max(5vw,24px) 38px}
+    header .kicker{color:#a9d6e8;font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:12px}
+    h1{max-width:900px;margin:8px 0 10px;font-size:clamp(30px,5vw,52px);line-height:1.08}header p{max-width:860px;margin:0;color:#e3edf3;font-size:17px}
+    main{max-width:1280px;margin:auto;padding:28px max(3vw,20px) 60px}.notice{background:#fff4de;border-left:5px solid var(--amber);padding:14px 18px;margin:0 0 24px}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.card,.panel{background:var(--white);border:1px solid #dce3e9;border-radius:10px;box-shadow:0 3px 14px #1c344914}
+    .card{padding:16px 18px}.card span{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.card strong{display:block;color:var(--navy);font-size:28px;margin-top:3px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:20px;min-height:380px}.panel.wide{grid-column:1/-1}h2{margin:0 0 4px;color:var(--navy);font-size:20px}.sub{margin:0 0 14px;color:var(--muted);font-size:13px}.chart-wrap{height:300px}
+    table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:9px 8px;border-bottom:1px solid #e2e7ec;text-align:right}th:first-child,td:first-child{text-align:left}th{color:var(--muted);font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+    footer{max-width:1280px;margin:auto;padding:0 max(3vw,20px) 35px;color:var(--muted);font-size:12px}.error{color:var(--red);font-weight:700}@media(max-width:850px){.cards,.grid{grid-template-columns:1fr}.panel.wide{grid-column:auto}}
+  </style>
+</head>
+<body>
+  <header><div class="kicker">Decision brief · Queensland · Complete years 2020–2024</div><h1>Road-safety priorities need two lenses</h1><p>Absolute burden identifies where programs can address the largest volume of harm. Resident-normalised burden identifies regional areas that warrant deeper diagnostic investigation.</p></header>
+  <main>
+    <div class="notice"><strong>Interpretation:</strong> population is not traffic exposure. These measures screen priorities; they do not estimate individual risk or prove what caused a crash.</div>
+    <section class="cards" aria-label="Headline statistics"><div class="card"><span>2024 fatal + serious casualties</span><strong id="fsi2024">—</strong></div><div class="card"><span>Change since 2020</span><strong id="change">—</strong></div><div class="card"><span>Highest 5-year burden</span><strong id="topLga">—</strong></div><div class="card"><span>Analysis records</span><strong>415,407</strong></div></section>
+    <section class="grid">
+      <article class="panel"><h2>Recorded fatal-and-serious burden increased</h2><p class="sub">Complete annual totals; 2025 is deliberately excluded.</p><div class="chart-wrap"><canvas id="trendChart" aria-label="Statewide annual fatal and serious casualty trend"></canvas></div></article>
+      <article class="panel"><h2>Large councils carry the greatest total burden</h2><p class="sub">Fatalities plus hospitalisations, 2020–2024.</p><div class="chart-wrap"><canvas id="burdenChart" aria-label="Top LGA absolute burden"></canvas></div></article>
+      <article class="panel"><h2>Population normalisation changes the shortlist</h2><p class="sub">Per 100,000 person-years; only LGAs with at least 100 five-year FSI shown.</p><div class="chart-wrap"><canvas id="rateChart" aria-label="Top LGA resident-normalised burden"></canvas></div></article>
+      <article class="panel"><h2>Recorded factor profiles differ by region</h2><p class="sub">Published aggregate factor indicators; involvement does not establish causation.</p><div class="chart-wrap"><canvas id="factorChart" aria-label="Police region factor shares"></canvas></div></article>
+      <article class="panel wide"><h2>Priority shortlist</h2><p class="sub">Keep total burden and resident-normalised burden visible instead of hiding them in one score.</p><div style="overflow:auto"><table><thead><tr><th>LGA</th><th>Fatalities</th><th>Hospitalisations</th><th>Five-year FSI</th><th>Years in highest quintile</th></tr></thead><tbody id="priorityTable"></tbody></table></div></article>
+    </section><p id="loadError" class="error" role="alert"></p>
+  </main>
+  <footer>Sources: Queensland Department of Transport and Main Roads crash data; Australian Bureau of Statistics estimated resident population. This portfolio analysis is not an official Queensland Government product.</footer>
+  <script>
+    const fmt=new Intl.NumberFormat('en-AU');const base={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e8edf1'}},x:{grid:{display:false}}}};
+    fetch('data/summary.json').then(r=>{if(!r.ok)throw Error('Data file not found');return r.json()}).then(data=>{const trend=data.statewide_trend,latest=trend.at(-1),first=trend.find(d=>d.year_key===2020);document.querySelector('#fsi2024').textContent=fmt.format(latest.fatal_and_serious_casualties);document.querySelector('#change').textContent=((latest.fatal_and_serious_casualties/first.fatal_and_serious_casualties-1)*100).toFixed(1)+'%';document.querySelector('#topLga').textContent=data.top_burden_lgas[0].lga;
+      new Chart(document.querySelector('#trendChart'),{type:'line',data:{labels:trend.map(d=>d.year_key),datasets:[{data:trend.map(d=>d.fatal_and_serious_casualties),borderColor:'#2878a8',backgroundColor:'#2878a822',fill:true,tension:.25,pointRadius:3}]},options:base});
+      const burden=data.top_burden_lgas.slice(0,10);new Chart(document.querySelector('#burdenChart'),{type:'bar',data:{labels:burden.map(d=>d.lga),datasets:[{data:burden.map(d=>Number(d.fatal_and_serious_casualties)),backgroundColor:'#14395b'}]},options:base});
+      const rates=data.top_rate_lgas_min_100_fsi.slice(0,10);new Chart(document.querySelector('#rateChart'),{type:'bar',data:{labels:rates.map(d=>d.lga),datasets:[{data:rates.map(d=>Number(d.annualised_fatal_and_serious_casualties_per_100k_residents)),backgroundColor:'#d88a18'}]},options:base});
+      const factors=data.police_region_factor_profile;new Chart(document.querySelector('#factorChart'),{type:'bar',data:{labels:factors.map(d=>d.police_region),datasets:[{label:'Drink driving',data:factors.map(d=>d.drink_driving_share_pct),backgroundColor:'#a73b3b'},{label:'Speed',data:factors.map(d=>d.speed_share_pct),backgroundColor:'#d88a18'},{label:'Fatigue',data:factors.map(d=>d.fatigue_share_pct),backgroundColor:'#2878a8'}]},options:{...base,plugins:{legend:{display:true,position:'bottom'}}}});
+      document.querySelector('#priorityTable').innerHTML=data.top_burden_lgas.slice(0,15).map(d=>`<tr><td>${d.lga}</td><td>${fmt.format(d.fatalities)}</td><td>${fmt.format(d.hospitalisations)}</td><td>${fmt.format(d.fatal_and_serious_casualties)}</td><td>${d.years_in_highest_burden_quintile}/5</td></tr>`).join('')
+    }).catch(error=>document.querySelector('#loadError').textContent='Run through a local server: python3 -m http.server 8000. '+error.message);
+  </script>
+</body>
+</html>

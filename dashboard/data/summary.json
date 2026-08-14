@@ -1,0 +1,455 @@
+{
+  "metadata": {
+    "analysis_period": "2020-2024 complete years",
+    "population_denominator": "ABS estimated resident population; rate is per 100,000 person-years",
+    "rate_caveat": "Population is not traffic exposure. Rates describe resident-normalised burden, not road-user risk.",
+    "low_count_rule": "Rate ranking shown only where five-year fatal-and-serious casualties >= 100."
+  },
+  "statewide_trend": [
+    {
+      "year_key": 2015,
+      "is_complete_year": 1,
+      "crash_count": 12159,
+      "fatalities": 244,
+      "hospitalisations": 6201,
+      "fatal_and_serious_casualties": 6445,
+      "all_casualties": 16208,
+      "severity_weighted_burden": 53382,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 53.01
+    },
+    {
+      "year_key": 2016,
+      "is_complete_year": 1,
+      "crash_count": 12553,
+      "fatalities": 251,
+      "hospitalisations": 6328,
+      "fatal_and_serious_casualties": 6579,
+      "all_casualties": 16689,
+      "severity_weighted_burden": 54473,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 52.41
+    },
+    {
+      "year_key": 2017,
+      "is_complete_year": 1,
+      "crash_count": 12735,
+      "fatalities": 246,
+      "hospitalisations": 6518,
+      "fatal_and_serious_casualties": 6764,
+      "all_casualties": 16839,
+      "severity_weighted_burden": 54515,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 53.11
+    },
+    {
+      "year_key": 2018,
+      "is_complete_year": 1,
+      "crash_count": 12958,
+      "fatalities": 244,
+      "hospitalisations": 6826,
+      "fatal_and_serious_casualties": 7070,
+      "all_casualties": 17261,
+      "severity_weighted_burden": 56041,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 54.56
+    },
+    {
+      "year_key": 2019,
+      "is_complete_year": 1,
+      "crash_count": 12965,
+      "fatalities": 222,
+      "hospitalisations": 7020,
+      "fatal_and_serious_casualties": 7242,
+      "all_casualties": 17184,
+      "severity_weighted_burden": 56195,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 55.86
+    },
+    {
+      "year_key": 2020,
+      "is_complete_year": 1,
+      "crash_count": 12147,
+      "fatalities": 278,
+      "hospitalisations": 7015,
+      "fatal_and_serious_casualties": 7293,
+      "all_casualties": 16071,
+      "severity_weighted_burden": 55162,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 60.04
+    },
+    {
+      "year_key": 2021,
+      "is_complete_year": 1,
+      "crash_count": 13476,
+      "fatalities": 275,
+      "hospitalisations": 7909,
+      "fatal_and_serious_casualties": 8184,
+      "all_casualties": 18039,
+      "severity_weighted_burden": 61189,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 60.73
+    },
+    {
+      "year_key": 2022,
+      "is_complete_year": 1,
+      "crash_count": 13021,
+      "fatalities": 296,
+      "hospitalisations": 7673,
+      "fatal_and_serious_casualties": 7969,
+      "all_casualties": 17497,
+      "severity_weighted_burden": 59651,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 61.2
+    },
+    {
+      "year_key": 2023,
+      "is_complete_year": 1,
+      "crash_count": 13622,
+      "fatalities": 273,
+      "hospitalisations": 8256,
+      "fatal_and_serious_casualties": 8529,
+      "all_casualties": 18125,
+      "severity_weighted_burden": 62186,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 62.61
+    },
+    {
+      "year_key": 2024,
+      "is_complete_year": 1,
+      "crash_count": 14358,
+      "fatalities": 302,
+      "hospitalisations": 8641,
+      "fatal_and_serious_casualties": 8943,
+      "all_casualties": 18877,
+      "severity_weighted_burden": 64860,
+      "fatal_and_serious_casualties_per_100_reported_crashes": 62.29
+    }
+  ],
+  "top_burden_lgas": [
+    {
+      "lga": "Brisbane City",
+      "fatalities": 132,
+      "hospitalisations": 7477,
+      "fatal_and_serious_casualties": 7609,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 117.34,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Gold Coast City",
+      "fatalities": 91,
+      "hospitalisations": 3988,
+      "fatal_and_serious_casualties": 4079,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 125.56,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Logan City",
+      "fatalities": 76,
+      "hospitalisations": 3253,
+      "fatal_and_serious_casualties": 3329,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 182.36,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Moreton Bay Region",
+      "fatalities": 95,
+      "hospitalisations": 3183,
+      "fatal_and_serious_casualties": 3278,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 131.78,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Sunshine Coast Region",
+      "fatalities": 75,
+      "hospitalisations": 2105,
+      "fatal_and_serious_casualties": 2180,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 122.54,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Ipswich City",
+      "fatalities": 45,
+      "hospitalisations": 1746,
+      "fatal_and_serious_casualties": 1791,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 147.8,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Townsville City",
+      "fatalities": 44,
+      "hospitalisations": 1631,
+      "fatal_and_serious_casualties": 1675,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 168.73,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Mackay Region",
+      "fatalities": 38,
+      "hospitalisations": 1278,
+      "fatal_and_serious_casualties": 1316,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 210.84,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Toowoomba Region",
+      "fatalities": 63,
+      "hospitalisations": 1240,
+      "fatal_and_serious_casualties": 1303,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 145.97,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Cairns Region",
+      "fatalities": 30,
+      "hospitalisations": 1272,
+      "fatal_and_serious_casualties": 1302,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 151.01,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Bundaberg Region",
+      "fatalities": 58,
+      "hospitalisations": 1048,
+      "fatal_and_serious_casualties": 1106,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 216.57,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Fraser Coast Region",
+      "fatalities": 54,
+      "hospitalisations": 994,
+      "fatal_and_serious_casualties": 1048,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 182.38,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Rockhampton Region",
+      "fatalities": 25,
+      "hospitalisations": 855,
+      "fatal_and_serious_casualties": 880,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 210.37,
+      "years_in_highest_burden_quintile": 5
+    },
+    {
+      "lga": "Redland City",
+      "fatalities": 16,
+      "hospitalisations": 695,
+      "fatal_and_serious_casualties": 711,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 86.48,
+      "years_in_highest_burden_quintile": 2
+    },
+    {
+      "lga": "Gympie Region",
+      "fatalities": 45,
+      "hospitalisations": 626,
+      "fatal_and_serious_casualties": 671,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 243.79,
+      "years_in_highest_burden_quintile": 2
+    },
+    {
+      "lga": "Scenic Rim Region",
+      "fatalities": 42,
+      "hospitalisations": 628,
+      "fatal_and_serious_casualties": 670,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 301.5,
+      "years_in_highest_burden_quintile": 1
+    },
+    {
+      "lga": "Gladstone Region",
+      "fatalities": 32,
+      "hospitalisations": 636,
+      "fatal_and_serious_casualties": 668,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 203.61,
+      "years_in_highest_burden_quintile": 1
+    },
+    {
+      "lga": "Somerset Region",
+      "fatalities": 25,
+      "hospitalisations": 522,
+      "fatal_and_serious_casualties": 547,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 423.73,
+      "years_in_highest_burden_quintile": 0
+    },
+    {
+      "lga": "Lockyer Valley Region",
+      "fatalities": 16,
+      "hospitalisations": 501,
+      "fatal_and_serious_casualties": 517,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 241.05,
+      "years_in_highest_burden_quintile": 0
+    },
+    {
+      "lga": "South Burnett Region",
+      "fatalities": 36,
+      "hospitalisations": 412,
+      "fatal_and_serious_casualties": 448,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 265.17,
+      "years_in_highest_burden_quintile": 0
+    }
+  ],
+  "top_rate_lgas_min_100_fsi": [
+    {
+      "lga": "Cook Shire",
+      "fatal_and_serious_casualties": 148,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 630.54,
+      "fatal_and_serious_burden_rank": 38
+    },
+    {
+      "lga": "Somerset Region",
+      "fatal_and_serious_casualties": 547,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 423.73,
+      "fatal_and_serious_burden_rank": 18
+    },
+    {
+      "lga": "Isaac Region",
+      "fatal_and_serious_casualties": 399,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 351.77,
+      "fatal_and_serious_burden_rank": 23
+    },
+    {
+      "lga": "Charters Towers Region",
+      "fatal_and_serious_casualties": 188,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 314.14,
+      "fatal_and_serious_burden_rank": 33
+    },
+    {
+      "lga": "North Burnett Region",
+      "fatal_and_serious_casualties": 155,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 302.03,
+      "fatal_and_serious_burden_rank": 37
+    },
+    {
+      "lga": "Scenic Rim Region",
+      "fatal_and_serious_casualties": 670,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 301.5,
+      "fatal_and_serious_burden_rank": 16
+    },
+    {
+      "lga": "Banana Shire",
+      "fatal_and_serious_casualties": 213,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 287.98,
+      "fatal_and_serious_burden_rank": 32
+    },
+    {
+      "lga": "Douglas Shire",
+      "fatal_and_serious_casualties": 178,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 281.28,
+      "fatal_and_serious_burden_rank": 34
+    },
+    {
+      "lga": "Burdekin Shire",
+      "fatal_and_serious_casualties": 238,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 280.88,
+      "fatal_and_serious_burden_rank": 31
+    },
+    {
+      "lga": "South Burnett Region",
+      "fatal_and_serious_casualties": 448,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 265.17,
+      "fatal_and_serious_burden_rank": 20
+    },
+    {
+      "lga": "Maranoa Region",
+      "fatal_and_serious_casualties": 164,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 250.41,
+      "fatal_and_serious_burden_rank": 36
+    },
+    {
+      "lga": "Gympie Region",
+      "fatal_and_serious_casualties": 671,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 243.79,
+      "fatal_and_serious_burden_rank": 15
+    },
+    {
+      "lga": "Lockyer Valley Region",
+      "fatal_and_serious_casualties": 517,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 241.05,
+      "fatal_and_serious_burden_rank": 19
+    },
+    {
+      "lga": "Hinchinbrook Shire",
+      "fatal_and_serious_casualties": 131,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 237.36,
+      "fatal_and_serious_burden_rank": 39
+    },
+    {
+      "lga": "Mareeba Shire",
+      "fatal_and_serious_casualties": 277,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 236.54,
+      "fatal_and_serious_burden_rank": 30
+    },
+    {
+      "lga": "Western Downs Region",
+      "fatal_and_serious_casualties": 403,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 232.41,
+      "fatal_and_serious_burden_rank": 22
+    },
+    {
+      "lga": "Tablelands Region",
+      "fatal_and_serious_casualties": 306,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 227.71,
+      "fatal_and_serious_burden_rank": 29
+    },
+    {
+      "lga": "Cassowary Coast Region",
+      "fatal_and_serious_casualties": 333,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 223.49,
+      "fatal_and_serious_burden_rank": 27
+    },
+    {
+      "lga": "Whitsunday Region",
+      "fatal_and_serious_casualties": 424,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 219.2,
+      "fatal_and_serious_burden_rank": 21
+    },
+    {
+      "lga": "Bundaberg Region",
+      "fatal_and_serious_casualties": 1106,
+      "annualised_fatal_and_serious_casualties_per_100k_residents": 216.57,
+      "fatal_and_serious_burden_rank": 11
+    }
+  ],
+  "police_region_factor_profile": [
+    {
+      "police_region": "Brisbane",
+      "crash_count": 18395,
+      "drink_driving_share_pct": 4.94,
+      "speed_share_pct": 2.36,
+      "fatigue_share_pct": 1.33
+    },
+    {
+      "police_region": "South Eastern",
+      "crash_count": 14427,
+      "drink_driving_share_pct": 7.04,
+      "speed_share_pct": 3.33,
+      "fatigue_share_pct": 1.71
+    },
+    {
+      "police_region": "North Coast",
+      "crash_count": 13184,
+      "drink_driving_share_pct": 8.21,
+      "speed_share_pct": 4.59,
+      "fatigue_share_pct": 2.28
+    },
+    {
+      "police_region": "Southern",
+      "crash_count": 8161,
+      "drink_driving_share_pct": 7.99,
+      "speed_share_pct": 4.79,
+      "fatigue_share_pct": 3.22
+    },
+    {
+      "police_region": "Central",
+      "crash_count": 5568,
+      "drink_driving_share_pct": 9.77,
+      "speed_share_pct": 5.15,
+      "fatigue_share_pct": 4.63
+    },
+    {
+      "police_region": "Far Northern",
+      "crash_count": 3446,
+      "drink_driving_share_pct": 11.81,
+      "speed_share_pct": 5.17,
+      "fatigue_share_pct": 3.34
+    },
+    {
+      "police_region": "Northern",
+      "crash_count": 3443,
+      "drink_driving_share_pct": 9.5,
+      "speed_share_pct": 4.62,
+      "fatigue_share_pct": 2.67
+    }
+  ]
+}

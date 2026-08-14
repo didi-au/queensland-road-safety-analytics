@@ -1,0 +1,14 @@
+.DS_Store
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+data/raw/
+data/staging/
+data/warehouse/
+data/exports/*.csv
+data/exports/*.parquet
+tmp/
+*.db-shm
+*.db-wal
