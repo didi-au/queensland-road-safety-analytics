@@ -3,45 +3,160 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a2540">
   <title>Queensland Road Safety Priorities</title>
-  <meta name="description" content="Decision-focused analysis of Queensland fatal and serious road-crash burden, 2020-2024.">
+  <meta name="description" content="Decision-focused analysis of Queensland fatal and serious road-crash burden, 2020–2024.">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <style>
-    :root{--navy:#14395b;--blue:#2878a8;--amber:#d88a18;--red:#a73b3b;--ink:#172332;--muted:#647383;--paper:#f5f7fa;--white:#fff}
-    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:15px/1.5 Inter,Arial,sans-serif}
-    header{color:#fff;background:linear-gradient(120deg,#102e4a,#1e6084);padding:46px max(5vw,24px) 38px}
-    header .kicker{color:#a9d6e8;font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:12px}
-    h1{max-width:900px;margin:8px 0 10px;font-size:clamp(30px,5vw,52px);line-height:1.08}header p{max-width:860px;margin:0;color:#e3edf3;font-size:17px}
-    main{max-width:1280px;margin:auto;padding:28px max(3vw,20px) 60px}.notice{background:#fff4de;border-left:5px solid var(--amber);padding:14px 18px;margin:0 0 24px}
-    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.card,.panel{background:var(--white);border:1px solid #dce3e9;border-radius:10px;box-shadow:0 3px 14px #1c344914}
-    .card{padding:16px 18px}.card span{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.card strong{display:block;color:var(--navy);font-size:28px;margin-top:3px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:20px;min-height:380px}.panel.wide{grid-column:1/-1}h2{margin:0 0 4px;color:var(--navy);font-size:20px}.sub{margin:0 0 14px;color:var(--muted);font-size:13px}.chart-wrap{height:300px}
-    table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:9px 8px;border-bottom:1px solid #e2e7ec;text-align:right}th:first-child,td:first-child{text-align:left}th{color:var(--muted);font-size:11px;letter-spacing:.04em;text-transform:uppercase}
-    footer{max-width:1280px;margin:auto;padding:0 max(3vw,20px) 35px;color:var(--muted);font-size:12px}.error{color:var(--red);font-weight:700}@media(max-width:850px){.cards,.grid{grid-template-columns:1fr}.panel.wide{grid-column:auto}}
+    :root{
+      --ink:#0a2540;--ink-2:#1d3b53;--purple:#635bff;--violet:#7a73ff;--cyan:#00d4ff;
+      --blue:#0a6dfd;--rose:#df1b41;--amber:#f5a623;--paper:#f6f9fc;--white:#fff;
+      --text:#0a2540;--muted:#53677a;--line:#e6ebf1;--shadow:0 18px 45px rgba(50,50,93,.10),0 6px 18px rgba(0,0,0,.05)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--text);background:var(--paper);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:var(--ink);padding:0 max(5vw,24px) 116px}
+    .hero::before{content:"";position:absolute;z-index:-2;inset:-38% -15% auto 38%;height:630px;transform:rotate(-10deg);background:linear-gradient(115deg,#635bff 4%,#7a73ff 33%,#00d4ff 77%,#7cf4d3);filter:saturate(115%)}
+    .hero::after{content:"";position:absolute;z-index:-1;width:520px;height:520px;right:-140px;top:-255px;border-radius:50%;background:#fff;opacity:.12;filter:blur(2px)}
+    .nav{max-width:1240px;height:78px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:750;letter-spacing:-.02em}
+    .brand-mark{display:grid;place-items:center;width:31px;height:31px;border-radius:9px;background:#fff;color:var(--purple);font-weight:850;box-shadow:0 7px 20px #0a254033}
+    .nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:650}
+    .nav-links a{text-decoration:none;opacity:.9}.nav-links a:hover{opacity:1}
+    .nav-cta{padding:8px 15px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff38;backdrop-filter:blur(12px)}
+    .hero-content{max-width:1240px;margin:74px auto 0;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(310px,.65fr);gap:70px;align-items:end}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;color:#d9e9ff;font-size:12px;font-weight:750;letter-spacing:.11em;text-transform:uppercase}
+    .eyebrow::before{content:"";width:26px;height:2px;border-radius:2px;background:var(--cyan)}
+    h1{max-width:820px;margin:0;font-size:clamp(42px,6vw,76px);line-height:1.01;letter-spacing:-.055em;font-weight:760}
+    .gradient-text{color:#9fe9ff}
+    .hero-copy{max-width:720px;margin:25px 0 0;color:#d5e3ef;font-size:clamp(17px,2vw,20px);line-height:1.55}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .button{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:700;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+    .button:hover{transform:translateY(-2px)}
+    .button-primary{background:#fff;color:var(--purple);box-shadow:0 9px 26px #071d344d}
+    .button-secondary{background:#ffffff14;border:1px solid #ffffff35;color:#fff}
+    .arrow{font-size:17px;line-height:1;transition:transform .2s ease}.button:hover .arrow{transform:translateX(3px)}
+    .hero-note{position:relative;padding:24px;border-radius:18px;background:#ffffff12;border:1px solid #ffffff28;box-shadow:0 25px 60px #071d3440;backdrop-filter:blur(16px)}
+    .hero-note .label{color:#9fe9ff;font-size:11px;font-weight:780;letter-spacing:.12em;text-transform:uppercase}
+    .hero-note strong{display:block;margin:9px 0 10px;font-size:22px;line-height:1.25;letter-spacing:-.025em}
+    .hero-note p{margin:0;color:#d5e3ef;font-size:14px}
+    main{position:relative;z-index:2;max-width:1240px;margin:-66px auto 0;padding:0 24px 78px}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+    .metric{position:relative;overflow:hidden;min-height:154px;padding:24px;border:1px solid #fff;border-radius:18px;background:#ffffffeb;box-shadow:var(--shadow);backdrop-filter:blur(16px)}
+    .metric::after{content:"";position:absolute;width:72px;height:72px;right:-20px;bottom:-24px;border-radius:50%;background:var(--metric-accent,#635bff);opacity:.09}
+    .metric:nth-child(2){--metric-accent:#df1b41}.metric:nth-child(3){--metric-accent:#00a878}.metric:nth-child(4){--metric-accent:#0a6dfd}
+    .metric-label{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:11px;font-weight:760;letter-spacing:.075em;text-transform:uppercase}
+    .metric-dot{width:8px;height:8px;border-radius:50%;background:var(--metric-accent,#635bff);box-shadow:0 0 0 5px color-mix(in srgb,var(--metric-accent,#635bff) 12%,transparent)}
+    .metric strong{display:block;margin:17px 0 3px;color:var(--ink);font-size:32px;line-height:1.05;letter-spacing:-.04em}
+    .metric small{color:#71869a;font-size:12px}
+    .decision{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;margin:0 0 26px;padding:34px;border:1px solid #dfe7ef;border-radius:22px;background:linear-gradient(135deg,#fff 20%,#f3f0ff);box-shadow:0 10px 35px rgba(50,50,93,.06)}
+    .section-kicker{margin:0 0 8px;color:var(--purple);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .decision h2{max-width:650px;margin:0;color:var(--ink);font-size:clamp(26px,3vw,36px);line-height:1.12;letter-spacing:-.035em}
+    .decision-copy{margin:13px 0 0;color:var(--muted);font-size:16px}
+    .tracks{display:grid;gap:12px}
+    .track{padding:17px 18px;border-radius:14px;background:#fff;border:1px solid #e6e9f5;box-shadow:0 6px 18px rgba(50,50,93,.05)}
+    .track b{display:block;margin-bottom:3px;color:var(--ink)}.track span{color:var(--muted);font-size:13px}
+    .track b::before{content:"";display:inline-block;width:8px;height:8px;margin-right:9px;border-radius:50%;background:var(--purple)}.track:last-child b::before{background:var(--cyan)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .panel{min-width:0;padding:26px;border:1px solid var(--line);border-radius:19px;background:var(--white);box-shadow:0 8px 28px rgba(50,50,93,.055);transition:transform .2s ease,box-shadow .2s ease}
+    .panel:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(50,50,93,.09)}
+    .panel.wide{grid-column:1/-1}.panel-head{display:flex;justify-content:space-between;align-items:start;gap:18px;margin-bottom:16px}
+    .panel h2{margin:0;color:var(--ink);font-size:19px;line-height:1.25;letter-spacing:-.02em}
+    .sub{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .tag{flex:0 0 auto;padding:5px 9px;border-radius:999px;background:#f0efff;color:var(--purple);font-size:10px;font-weight:780;letter-spacing:.06em;text-transform:uppercase}
+    .chart-wrap{height:305px}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:13px}
+    table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
+    th,td{padding:13px 14px;border-bottom:1px solid #edf1f5;text-align:right;white-space:nowrap}
+    th:first-child,td:first-child{text-align:left}tr:last-child td{border-bottom:0}tbody tr:hover{background:#f8faff}
+    th{color:#71869a;background:#fafcff;font-size:10px;letter-spacing:.075em;text-transform:uppercase}
+    td:first-child{color:var(--ink);font-weight:680}
+    .method-note{display:flex;align-items:flex-start;gap:13px;margin-top:26px;padding:18px 20px;border-radius:14px;background:#fff8e8;border:1px solid #f5dfae;color:#725719;font-size:13px}
+    .method-icon{display:grid;flex:0 0 auto;place-items:center;width:25px;height:25px;border-radius:50%;background:#f5a623;color:#fff;font-weight:800}
+    .error{color:var(--rose);font-weight:700}
+    footer{border-top:1px solid var(--line);background:#fff}
+    .footer-inner{max-width:1240px;margin:auto;padding:30px 24px 38px;display:flex;justify-content:space-between;gap:24px;color:#71869a;font-size:12px}
+    .footer-inner a{color:var(--purple);font-weight:650;text-decoration:none}
+    @media(max-width:980px){.hero-content{grid-template-columns:1fr}.hero-note{max-width:620px}.metrics{grid-template-columns:1fr 1fr}.decision{grid-template-columns:1fr}}
+    @media(max-width:720px){.hero{padding:0 20px 98px}.nav{height:68px}.nav-links a:not(.nav-cta){display:none}.hero-content{margin-top:48px;gap:38px}h1{font-size:43px}.hero-copy{font-size:17px}main{margin-top:-48px;padding:0 16px 58px}.metrics,.grid{grid-template-columns:1fr}.metric{min-height:132px}.panel.wide{grid-column:auto}.decision{padding:25px}.panel{padding:21px}.footer-inner{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.arrow,.panel{transition:none}}
   </style>
 </head>
 <body>
-  <header><div class="kicker">Decision brief · Queensland · Complete years 2020–2024</div><h1>Road-safety priorities need two lenses</h1><p>Absolute burden identifies where programs can address the largest volume of harm. Resident-normalised burden identifies regional areas that warrant deeper diagnostic investigation.</p></header>
-  <main>
-    <div class="notice"><strong>Interpretation:</strong> population is not traffic exposure. These measures screen priorities; they do not estimate individual risk or prove what caused a crash.</div>
-    <section class="cards" aria-label="Headline statistics"><div class="card"><span>2024 fatal + serious casualties</span><strong id="fsi2024">—</strong></div><div class="card"><span>Change since 2020</span><strong id="change">—</strong></div><div class="card"><span>Highest 5-year burden</span><strong id="topLga">—</strong></div><div class="card"><span>Analysis records</span><strong>415,407</strong></div></section>
+  <header class="hero">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top"><span class="brand-mark">Q</span><span>Road Safety Intelligence</span></a>
+      <div class="nav-links">
+        <a href="#analysis">Analysis</a>
+        <a href="https://github.com/didi-au/queensland-road-safety-analytics/blob/main/reports/EXECUTIVE_BRIEF.md">Methodology</a>
+        <a class="nav-cta" href="https://github.com/didi-au/queensland-road-safety-analytics">View project</a>
+      </div>
+    </nav>
+    <div class="hero-content" id="top">
+      <div>
+        <div class="eyebrow">Queensland · Complete years 2020–2024</div>
+        <h1>Prioritising safer roads with <span class="gradient-text">transparent evidence.</span></h1>
+        <p class="hero-copy">A decision-focused analysis separating the places carrying the greatest volume of serious harm from regional areas that warrant deeper investigation.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#analysis">Explore the analysis <span class="arrow">→</span></a>
+          <a class="button button-secondary" href="https://github.com/didi-au/queensland-road-safety-analytics">View the code <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <aside class="hero-note" aria-label="Core recommendation">
+        <span class="label">Core recommendation</span>
+        <strong>Fund two complementary priority tracks.</strong>
+        <p>Use total fatal-and-serious-injury burden for scalable programs and resident-normalised burden for targeted diagnostic reviews.</p>
+      </aside>
+    </div>
+  </header>
+
+  <main id="analysis">
+    <section class="metrics" aria-label="Headline statistics">
+      <article class="metric"><div class="metric-label"><span>2024 FSI casualties</span><i class="metric-dot"></i></div><strong id="fsi2024">—</strong><small>Fatalities + hospitalisations</small></article>
+      <article class="metric"><div class="metric-label"><span>Change since 2020</span><i class="metric-dot"></i></div><strong id="change">—</strong><small>Endpoint comparison</small></article>
+      <article class="metric"><div class="metric-label"><span>Highest 5-year burden</span><i class="metric-dot"></i></div><strong id="topLga">—</strong><small>Local government area</small></article>
+      <article class="metric"><div class="metric-label"><span>Analysis records</span><i class="metric-dot"></i></div><strong>415,407</strong><small>Official crash records modelled</small></article>
+    </section>
+
+    <section class="decision" aria-labelledby="decision-title">
+      <div><p class="section-kicker">Decision framework</p><h2 id="decision-title">One score would hide the most important trade-off.</h2><p class="decision-copy">Total burden and resident-normalised burden answer different planning questions. Keeping both visible makes the recommendation explainable and testable.</p></div>
+      <div class="tracks"><div class="track"><b>Absolute-burden track</b><span>Focus scalable programs where the greatest volume of serious harm occurs.</span></div><div class="track"><b>Regional diagnostic track</b><span>Investigate high normalised burden before selecting a treatment.</span></div></div>
+    </section>
+
     <section class="grid">
-      <article class="panel"><h2>Recorded fatal-and-serious burden increased</h2><p class="sub">Complete annual totals; 2025 is deliberately excluded.</p><div class="chart-wrap"><canvas id="trendChart" aria-label="Statewide annual fatal and serious casualty trend"></canvas></div></article>
-      <article class="panel"><h2>Large councils carry the greatest total burden</h2><p class="sub">Fatalities plus hospitalisations, 2020–2024.</p><div class="chart-wrap"><canvas id="burdenChart" aria-label="Top LGA absolute burden"></canvas></div></article>
-      <article class="panel"><h2>Population normalisation changes the shortlist</h2><p class="sub">Per 100,000 person-years; only LGAs with at least 100 five-year FSI shown.</p><div class="chart-wrap"><canvas id="rateChart" aria-label="Top LGA resident-normalised burden"></canvas></div></article>
-      <article class="panel"><h2>Recorded factor profiles differ by region</h2><p class="sub">Published aggregate factor indicators; involvement does not establish causation.</p><div class="chart-wrap"><canvas id="factorChart" aria-label="Police region factor shares"></canvas></div></article>
-      <article class="panel wide"><h2>Priority shortlist</h2><p class="sub">Keep total burden and resident-normalised burden visible instead of hiding them in one score.</p><div style="overflow:auto"><table><thead><tr><th>LGA</th><th>Fatalities</th><th>Hospitalisations</th><th>Five-year FSI</th><th>Years in highest quintile</th></tr></thead><tbody id="priorityTable"></tbody></table></div></article>
-    </section><p id="loadError" class="error" role="alert"></p>
+      <article class="panel"><div class="panel-head"><div><h2>Serious-injury burden increased</h2><p class="sub">Complete annual totals; preliminary 2025 is excluded.</p></div><span class="tag">Trend</span></div><div class="chart-wrap"><canvas id="trendChart" aria-label="Statewide annual fatal and serious casualty trend"></canvas></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Large councils carry the greatest volume</h2><p class="sub">Fatalities plus hospitalisations, 2020–2024.</p></div><span class="tag">Burden</span></div><div class="chart-wrap"><canvas id="burdenChart" aria-label="Top LGA absolute burden"></canvas></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Normalisation changes the shortlist</h2><p class="sub">Per 100,000 person-years; minimum 100 five-year FSI.</p></div><span class="tag">Rate</span></div><div class="chart-wrap"><canvas id="rateChart" aria-label="Top LGA resident-normalised burden"></canvas></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Recorded factors differ by region</h2><p class="sub">Involvement indicators do not establish causation.</p></div><span class="tag">Profile</span></div><div class="chart-wrap"><canvas id="factorChart" aria-label="Police region factor shares"></canvas></div></article>
+      <article class="panel wide"><div class="panel-head"><div><h2>Persistent high-burden locations</h2><p class="sub">The shortlist retains total burden and persistence instead of hiding them in a combined score.</p></div><span class="tag">Priority list</span></div><div class="table-wrap"><table><thead><tr><th>LGA</th><th>Fatalities</th><th>Hospitalisations</th><th>Five-year FSI</th><th>Years in highest quintile</th></tr></thead><tbody id="priorityTable"></tbody></table></div></article>
+    </section>
+
+    <div class="method-note"><span class="method-icon">i</span><div><strong>Interpret with care.</strong> Population is not traffic exposure. Tourist travel, freight, road kilometres and through-traffic can materially affect an LGA’s result. These measures screen priorities; they do not estimate individual risk or prove crash causation.</div></div>
+    <p id="loadError" class="error" role="alert"></p>
   </main>
-  <footer>Sources: Queensland Department of Transport and Main Roads crash data; Australian Bureau of Statistics estimated resident population. This portfolio analysis is not an official Queensland Government product.</footer>
+
+  <footer><div class="footer-inner"><span>Sources: Queensland Department of Transport and Main Roads; Australian Bureau of Statistics.</span><span>Independent portfolio analysis · <a href="https://github.com/didi-au/queensland-road-safety-analytics">View methodology and code</a></span></div></footer>
+
   <script>
-    const fmt=new Intl.NumberFormat('en-AU');const base={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e8edf1'}},x:{grid:{display:false}}}};
-    fetch('data/summary.json').then(r=>{if(!r.ok)throw Error('Data file not found');return r.json()}).then(data=>{const trend=data.statewide_trend,latest=trend.at(-1),first=trend.find(d=>d.year_key===2020);document.querySelector('#fsi2024').textContent=fmt.format(latest.fatal_and_serious_casualties);document.querySelector('#change').textContent=((latest.fatal_and_serious_casualties/first.fatal_and_serious_casualties-1)*100).toFixed(1)+'%';document.querySelector('#topLga').textContent=data.top_burden_lgas[0].lga;
-      new Chart(document.querySelector('#trendChart'),{type:'line',data:{labels:trend.map(d=>d.year_key),datasets:[{data:trend.map(d=>d.fatal_and_serious_casualties),borderColor:'#2878a8',backgroundColor:'#2878a822',fill:true,tension:.25,pointRadius:3}]},options:base});
-      const burden=data.top_burden_lgas.slice(0,10);new Chart(document.querySelector('#burdenChart'),{type:'bar',data:{labels:burden.map(d=>d.lga),datasets:[{data:burden.map(d=>Number(d.fatal_and_serious_casualties)),backgroundColor:'#14395b'}]},options:base});
-      const rates=data.top_rate_lgas_min_100_fsi.slice(0,10);new Chart(document.querySelector('#rateChart'),{type:'bar',data:{labels:rates.map(d=>d.lga),datasets:[{data:rates.map(d=>Number(d.annualised_fatal_and_serious_casualties_per_100k_residents)),backgroundColor:'#d88a18'}]},options:base});
-      const factors=data.police_region_factor_profile;new Chart(document.querySelector('#factorChart'),{type:'bar',data:{labels:factors.map(d=>d.police_region),datasets:[{label:'Drink driving',data:factors.map(d=>d.drink_driving_share_pct),backgroundColor:'#a73b3b'},{label:'Speed',data:factors.map(d=>d.speed_share_pct),backgroundColor:'#d88a18'},{label:'Fatigue',data:factors.map(d=>d.fatigue_share_pct),backgroundColor:'#2878a8'}]},options:{...base,plugins:{legend:{display:true,position:'bottom'}}}});
-      document.querySelector('#priorityTable').innerHTML=data.top_burden_lgas.slice(0,15).map(d=>`<tr><td>${d.lga}</td><td>${fmt.format(d.fatalities)}</td><td>${fmt.format(d.hospitalisations)}</td><td>${fmt.format(d.fatal_and_serious_casualties)}</td><td>${d.years_in_highest_burden_quintile}/5</td></tr>`).join('')
+    const fmt=new Intl.NumberFormat('en-AU');
+    Chart.defaults.font.family='-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+    Chart.defaults.color='#53677a';
+    const base={responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},plugins:{legend:{display:false},tooltip:{backgroundColor:'#0a2540',titleColor:'#fff',bodyColor:'#d5e3ef',padding:12,cornerRadius:9,displayColors:false}},scales:{y:{beginAtZero:true,border:{display:false},grid:{color:'#edf1f5'},ticks:{padding:8}},x:{border:{display:false},grid:{display:false},ticks:{padding:8,maxRotation:42,minRotation:0}}}};
+    fetch('data/summary.json').then(r=>{if(!r.ok)throw Error('Data file not found');return r.json()}).then(data=>{
+      const trend=data.statewide_trend,latest=trend.at(-1),first=trend.find(d=>d.year_key===2020);
+      document.querySelector('#fsi2024').textContent=fmt.format(latest.fatal_and_serious_casualties);
+      document.querySelector('#change').textContent=((latest.fatal_and_serious_casualties/first.fatal_and_serious_casualties-1)*100).toFixed(1)+'%';
+      document.querySelector('#topLga').textContent=data.top_burden_lgas[0].lga;
+      new Chart(document.querySelector('#trendChart'),{type:'line',data:{labels:trend.map(d=>d.year_key),datasets:[{data:trend.map(d=>d.fatal_and_serious_casualties),borderColor:'#635bff',backgroundColor:'rgba(99,91,255,.10)',fill:true,tension:.32,pointRadius:3,pointHoverRadius:6,pointBackgroundColor:'#fff',pointBorderColor:'#635bff',pointBorderWidth:2}]},options:base});
+      const burden=data.top_burden_lgas.slice(0,10);
+      new Chart(document.querySelector('#burdenChart'),{type:'bar',data:{labels:burden.map(d=>d.lga),datasets:[{data:burden.map(d=>Number(d.fatal_and_serious_casualties)),backgroundColor:'#0a2540',hoverBackgroundColor:'#635bff',borderRadius:7,borderSkipped:false}]},options:base});
+      const rates=data.top_rate_lgas_min_100_fsi.slice(0,10);
+      new Chart(document.querySelector('#rateChart'),{type:'bar',data:{labels:rates.map(d=>d.lga),datasets:[{data:rates.map(d=>Number(d.annualised_fatal_and_serious_casualties_per_100k_residents)),backgroundColor:'#00b8d9',hoverBackgroundColor:'#635bff',borderRadius:7,borderSkipped:false}]},options:base});
+      const factors=data.police_region_factor_profile;
+      new Chart(document.querySelector('#factorChart'),{type:'bar',data:{labels:factors.map(d=>d.police_region),datasets:[{label:'Drink driving',data:factors.map(d=>d.drink_driving_share_pct),backgroundColor:'#df1b41',borderRadius:5},{label:'Speed',data:factors.map(d=>d.speed_share_pct),backgroundColor:'#f5a623',borderRadius:5},{label:'Fatigue',data:factors.map(d=>d.fatigue_share_pct),backgroundColor:'#635bff',borderRadius:5}]},options:{...base,plugins:{...base.plugins,legend:{display:true,position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',boxWidth:7,padding:18}}}}});
+      document.querySelector('#priorityTable').innerHTML=data.top_burden_lgas.slice(0,15).map(d=>`<tr><td>${d.lga}</td><td>${fmt.format(d.fatalities)}</td><td>${fmt.format(d.hospitalisations)}</td><td>${fmt.format(d.fatal_and_serious_casualties)}</td><td>${d.years_in_highest_burden_quintile}/5</td></tr>`).join('');
     }).catch(error=>document.querySelector('#loadError').textContent='Run through a local server: python3 -m http.server 8000. '+error.message);
   </script>
 </body>
